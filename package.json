@@ -1,0 +1,28 @@
+{
+  "name": "orbit-stabilizer.github.io",
+  "version": "1.0.0",
+  "description": "Personal Website",
+  "main": "index.js",
+  "watch": {
+    "sass": "./src/scss/style.scss"
+  },
+  "scripts": {
+    "sass": "node ./tasks/sass.js",
+    "watch": "npm-watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orbit-stabilizer/orbit-stabilizer.github.io.git"
+  },
+  "author": "Kamal Deowra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/orbit-stabilizer/orbit-stabilizer.github.io/issues"
+  },
+  "homepage": "https://github.com/orbit-stabilizer/orbit-stabilizer.github.io#readme",
+  "devDependencies": {
+    "mkdirp": "^0.5.1",
+    "node-sass": "^4.9.2",
+    "npm-watch": "^0.3.0"
+  }
+}
