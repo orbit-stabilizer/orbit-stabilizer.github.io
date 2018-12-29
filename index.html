@@ -6,6 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="Description" content="My blog posts :)">
+
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+
   <style>
     *,
     *::before,
@@ -15,12 +20,22 @@
       box-sizing: inherit;
     }
 
+    html {
+      height: 100%;
+    }
+
     body {
       box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 32px;
+      color: #212121;
     }
 
     main {
-      padding: 28px;
+      flex: 1 0 auto;
+      margin-bottom: 50px;
     }
 
     main article {
@@ -44,13 +59,33 @@
     main article .timestamp {
       font-size: 12px;
     }
+
+    @media only screen and (max-width: 768px) {
+
+      .user-options,
+      .menu {
+        display: none;
+      }
+    }
+
+    /* .menu {
+      height: 6rem;
+      width: 6rem;
+      border-radius: 50%;
+      position: fixed;
+      top: 6.5rem;
+      right: 6.5rem;
+      background-image: radial-gradient(#D8BFD8, #DDA0DD);
+    } */
   </style>
   <link rel="icon" href="favicon.ico">
-  <title>Thoughts...</title>
+  <title>Musings.</title>
 </head>
 
 <body>
   <main>
+    <!-- <h1 style="color: red">Under Construction :)</h1>
+    <div class="menu">&nbsp;</div> -->
     <article>
       <div class="heading">
         <h3>
@@ -114,6 +149,45 @@
       <p class="timestamp">Published: <time>28-12-2018</time></p>
     </article>
   </main>
+  <footer class="user-options">
+    <div class="user-options-width">
+      <p>Choose a reading width:</p>
+      <div>
+        <button id="width-small-btn">Small</button>
+        <button id="width-medium-btn">Medium</button>
+        <button id="width-large-btn">Large</button>
+        <!-- <input type="text" placeholder="768" name="custom-reading-width-btn" id="custom-reading-width-btn"> -->
+        <!-- <label for="custom-reading-width-btn"><button>Go</button></label> -->
+      </div>
+    </div>
+  </footer>
+
+
 </body>
+<script>
+  const dict = new Map();
+
+  const width_small_btn = document.getElementById('width-small-btn');
+  const width_medium_btn = document.getElementById('width-medium-btn');
+  const width_large_btn = document.getElementById('width-large-btn');
+
+  // setting width for each btn
+  dict.set(width_small_btn, 768);
+  dict.set(width_medium_btn, 992);
+  dict.set(width_large_btn, 1200);
+
+  const width_btn_array = [width_small_btn, width_medium_btn, width_large_btn];
+
+  const articles = document.querySelectorAll('article');
+
+  width_btn_array.forEach(btn => {
+    btn.addEventListener('click', () => {
+      articles.forEach(article => {
+        article.style.maxWidth = String(dict.get(btn)) + 'px';
+      });
+    });
+  });
+
+</script>
 
 </html>
